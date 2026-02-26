@@ -10,7 +10,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
-
+# 2 pointer meet hence a loop exists 
         slow = head
         fast = head
         while fast and fast.next:
