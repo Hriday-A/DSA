@@ -34,3 +34,6 @@ class Solution {
         return -1;
     }
 }
+
+// We used two binary search indivually to find the values for the first and last 
+// also for values with just single value it should return the same postion twice - like if 5 appears at 0 -{0,0}
