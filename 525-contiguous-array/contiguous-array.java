@@ -21,3 +21,4 @@ class Solution {
         return temp;
     }
 }
+/* Uses Pattern Running Sum (v.common) - whenever see balanced subbarray where sum or product is asked or use, use this method*/
