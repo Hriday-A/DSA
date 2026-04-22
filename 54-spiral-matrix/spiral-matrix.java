@@ -31,3 +31,9 @@ class Solution {
         return result;
     }
 }
+
+/*
+Traverse matrix in spiral using 4 boundaries (top, bottom, left, right).
+Move in 4 directions: → ↓ ← ↑, shrinking boundaries after each step.
+Conditions prevent re-visiting rows/columns and avoid duplicate corners.
+*/
