@@ -15,23 +15,26 @@
  */
 class Solution {
     TreeNode prev;
-    boolean flag;
+    // boolean flag;
     public boolean isValidBST(TreeNode root) {
-        this.flag= true;
-        helper(root);
-        return flag;
+        return helper(root);
     }
-    private void helper(TreeNode root){
+    private boolean helper(TreeNode root){
         // base case
-        if (root == null) return;
+        if (root == null) return true;
 
         // left
-        helper(root.left);
+        boolean left = helper(root.left);
         if(prev!=null && root.val<=prev.val){
-            this.flag=false;
+            return false;
         }
         this.prev = root;
         // right
-        if(flag) helper(root.right);
+        boolean right = true;
+        if(left){
+            right =helper(root.right); //conditional recursion 
+        }
+        return left && right;
+
     }
 }
