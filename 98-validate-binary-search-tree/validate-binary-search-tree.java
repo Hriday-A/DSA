@@ -32,6 +32,6 @@ class Solution {
         }
         this.prev = root;
         // right
-        helper(root.right);
+        if(flag) helper(root.right);
     }
 }
