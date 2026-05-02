@@ -51,16 +51,15 @@ class Solution {
     }
     private TreeNode helper(int[] preorder, int st, int end, HashMap<Integer, Integer> map){
         //base 
-        // if(preorder.length==idx) return null;
-        if(st>end) return null;
+        if(st>end) return null; //--> this works because we need null in cases the values are missing 
         //logic
-        int rootVal = preorder[idx];
-        idx++;
+        int rootVal = preorder[idx];// preoder is a parameter bcs we need the root val
+        idx++; // ids is global bcs it stricitly increases 
         TreeNode root= new TreeNode(rootVal);
         int rootIdx= map.get(rootVal);
         //left
-        root.left = helper(preorder,st, rootIdx-1,map);
-        root.right = helper(preorder,rootIdx+1,end,map);
+        root.left = helper(preorder,st, rootIdx-1,map); // we keep the start the same as in the inital and then move 
+        root.right = helper(preorder,rootIdx+1,end,map); 
         return root;
     }
 }
