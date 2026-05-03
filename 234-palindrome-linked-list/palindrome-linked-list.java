@@ -25,12 +25,12 @@ class Solution {
         slow = head;
         while(fast!=null){
             if(fast.val!=slow.val){
-                System.out.println(fast.val);
-                System.out.println(slow.val);
+                // System.out.println(fast.val);
+                // System.out.println(slow.val);
                 return flag;
                 }
-                System.out.println(fast.val);
-                System.out.println(slow.val);
+                // System.out.println(fast.val);
+                // System.out.println(slow.val);
                 slow=slow.next;
                 fast=fast.next;
             }
