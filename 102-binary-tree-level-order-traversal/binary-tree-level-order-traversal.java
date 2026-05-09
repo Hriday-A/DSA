@@ -43,6 +43,10 @@ class Solution {
     }
 }
 */
+
+//sol-2 Using DFS
+// Time Complexity O(n)
+// Space Complexity O(n)
 class Solution {
     private List<List<Integer>> result;
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -53,12 +57,12 @@ class Solution {
     private void dfs(TreeNode root, int level){
         //base
         if(root==null) return;
-
         //logic
         if(level==result.size()){
             result.add(new ArrayList<>());
         }
-        List<Integer> li =result.get(level);
+        List<Integer> li =result.get(level); 
+        //result.get(level).add(root.val); // if we directly add the value it will be by reference and not val --> ds inside a ds acts like pointer 
         li.add(root.val);
         dfs(root.left,level+1);
         dfs(root.right,level+1);
