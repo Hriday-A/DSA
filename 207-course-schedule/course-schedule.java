@@ -1,4 +1,6 @@
 // because we deal with neighbour's neighbour's neighbour's ... hence bfs/dfs
+// we are visiting each and everynode Time Complexity: O(V+E)
+// Queue's length is the breath of graph - Space Complexity O(V+E)
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         //Adj List --> HashMap(easy to navigate what are connected values aka neighbours )
