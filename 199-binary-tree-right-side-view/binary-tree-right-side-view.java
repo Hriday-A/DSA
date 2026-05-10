@@ -20,7 +20,7 @@ class Solution {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while(!q.isEmpty()){
-            int size = q.size();
+            int size = q.size(); // we take size because we distincly req the values in the level
             for(int i=0;i<size;i++){
                 TreeNode curr = q.poll();
                 if(i==size-1) result.add(curr.val);
