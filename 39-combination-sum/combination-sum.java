@@ -1,3 +1,5 @@
+//Time Complexity - O(n*2 ^ (m+n))
+//Space Complexity - O(n^2)
 // class Solution {
 //     List<List<Integer>> result;
 //     public List<List<Integer>> combinationSum(int[] candidates, int target) {
@@ -23,6 +25,9 @@
 //         helper(candidates,target-candidates[i],new ArrayList<>(path),i);
 //     }
 // }
+
+//Time Complexity - O(2 ^ (m+n))
+//Space Complexity - O(n)
 class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
