@@ -20,7 +20,7 @@ class Solution {
             if((arr[i]==false)&&(i%idx==0 || idx%i==0)){
                 arr[i]= true; //action 
                 helper(n,idx+1); //recurse
-                System.out.println(arr[i]);
+                // System.out.println(arr[i]);
                 //backtrack 
                 arr[i]= false;
             }
