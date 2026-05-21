@@ -24,6 +24,7 @@ class Solution {
         while(n!=0){
             if(n%2!=0){
                 result=result*x;
+                // n=n-1;
             }
             n=n/2;
             x = x * x;
