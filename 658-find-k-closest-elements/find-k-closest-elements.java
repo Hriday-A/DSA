@@ -1,29 +1,21 @@
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
-        PriorityQueue<Integer> pq= new PriorityQueue<Integer>(
-        (a,b) -> {
-            if (Math.abs(a-x) == Math.abs(b-x)) {
-                return b - a;
-            }
-            return Math.abs(b-x) - Math.abs(a-x);
-            }
-        );
-        for(int i:arr){
-            pq.offer(i);
-            if(pq.size()>k){
-                pq.poll();
-                }  
-            }
-        List<Integer> res = new ArrayList<>();
-        for (int i=0;i<k;i++){
-            res.add(pq.poll());
+        List<Integer> result= new ArrayList<>();
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b)->{
+            int disA= Math.abs(a-x);
+            int disB= Math.abs(b-x);
+            if(disA==disB) return b-a;
+            else return disB-disA;
+        });
+        //max heap bcs we are storing the top 4 lowest values and removing bigger values 
+        for(int i=0;i<arr.length;i++){
+            pq.add(arr[i]);
+            if(pq.size()>k) pq.poll();
         }
-
-        Collections.sort(res);
-
-        return res;
-
-
-        
+        while(!pq.isEmpty()){
+            result.add(pq.poll());
+        }
+        Collections.sort(result);
+        return result;
     }
 }
