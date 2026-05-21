@@ -55,6 +55,8 @@ class Solution {
 
 //Most optimal sol -
 //binary search 
+// Time complexity : O(logn+k)
+//Space Complexity : O(1)
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> result= new ArrayList<>();
