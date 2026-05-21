@@ -1,3 +1,7 @@
+//Time Complexity : O(nlog(k))
+// Space Complexity: O(k)
+//using heap sol -
+/*
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> result= new ArrayList<>();
@@ -16,6 +20,31 @@ class Solution {
             result.add(pq.poll());
         }
         Collections.sort(result);
+        return result;
+    }
+}
+*/ 
+
+// intermediate sol - 
+// using 2 pointers 
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> result= new ArrayList<>();
+        int l=0;
+        int h = arr.length-1;
+        while(h-l+1>k){
+            // int mid=l+(h-l)/2;
+            int disA= Math.abs(arr[l]-x);
+            int disB= Math.abs(arr[h]-x);
+            if (disA > disB) {
+                l++;
+            } else {
+                h--;
+            }
+        }
+        for(int i=l;i<=h;i++){
+            result.add(arr[i]);
+        }
         return result;
     }
 }
