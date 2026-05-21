@@ -27,6 +27,9 @@ class Solution {
 
 // intermediate sol - 
 // using 2 pointers 
+//Time Complexity : O(n)
+// Space Complexity: O(1)
+/*
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> result= new ArrayList<>();
@@ -45,6 +48,34 @@ class Solution {
         for(int i=l;i<=h;i++){
             result.add(arr[i]);
         }
+        return result;
+    }
+}
+*/
+
+//Most optimal sol -
+//binary search 
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        List<Integer> result= new ArrayList<>();
+        int l=0;
+        int h = arr.length-1;
+        while(l<h){
+            int mid=l+(h-l)/2;
+            if(arr[mid]<x) l=mid+1;
+            else h=mid;
+        }
+        l=h-1;
+        while(k>0){
+            if(l<0) h++;
+            else if (h >= arr.length || Math.abs(arr[l] - x) <= Math.abs(arr[h] - x)) l--;
+            else h++;
+            k--;
+        }
+        for (int i = l + 1; i < h; i++) {
+            result.add(arr[i]);
+        }
+        
         return result;
     }
 }
