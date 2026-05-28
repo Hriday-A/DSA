@@ -11,10 +11,10 @@ class Solution {
             // we are separating all numbers out 
             // char -> num ( currnum =0 initally )
             //change to currnumm =1, then 12 then 123...
-            else if(c == '['){
+            else if(c == '['){ // repeats the above process 
                 String bb = decodeString(s);
-                for(int k=0;k<currnum;k++){
-                    currstr.append(bb);
+                for(int k=0;k<currnum;k++){ // append the values for the reapting no. 
+                    currstr.append(bb); 
                 }
                 currnum=0;
             }else if(c==']') return currstr.toString();
