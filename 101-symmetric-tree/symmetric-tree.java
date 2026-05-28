@@ -13,6 +13,10 @@
  *     }
  * }
  */
+ // Time Complexity = O(n)
+ // Space Complexity = O(n)
+ // using level order traversal - 
+ /*
 class Solution {
     public boolean isSymmetric(TreeNode root) {
         if(root==null) return true;
@@ -31,5 +35,28 @@ class Solution {
             q.add(right.left);
         }
         return true;
+    }
+}
+*/
+
+class Solution {
+    boolean flag;
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null) return true;
+        this.flag = true;
+        helper(root.left, root.right);
+        return flag;
+    }
+    private void helper(TreeNode left, TreeNode right){
+        if(left==null && right==null) return;
+        if(left==null || right== null){
+            flag = false;
+            return;
+        } 
+        if(left.val!=right.val){
+            flag = false;
+        }
+        if(flag) helper(left.left,right.right);
+        if(flag) helper(left.right,right.left);
     }
 }
