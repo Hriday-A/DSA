@@ -1,3 +1,7 @@
+// Time complexity : O(m+n)
+// Space Complexity : O(1) (since the map has at most 26 entries, constant-size alphabet).
+// used freq map to solve it - 
+/*
 class Solution {
     public String customSortString(String order, String s) {
         HashMap<Character,Integer> map = new HashMap<>();
@@ -22,6 +26,27 @@ class Solution {
             }
             // map.remove(c);
         }
+        return sb.toString();
+    }
+}
+*/ 
+class Solution {
+    public String customSortString(String order, String s) {
+        int[] so = new int[26];
+        for(int i=0; i<order.length();i++){
+            so[order.charAt(i)-'a']=i;
+        }
+        Character[] arr = new Character[s.length()];
+        for (int i = 0; i < s.length(); ++i) {
+            arr[i] = s.charAt(i);
+        }
+        
+        Arrays.sort(arr,(a,b)->so[a-'a']-so[b-'a']);
+        StringBuilder sb = new StringBuilder(arr.length);
+        for (Character c : arr) {
+            sb.append(c.charValue());
+        }
+
         return sb.toString();
     }
 }
