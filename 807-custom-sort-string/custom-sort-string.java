@@ -36,12 +36,16 @@ class Solution {
         for(int i=0; i<order.length();i++){
             so[order.charAt(i)-'a']=i;
         }
+
+// cant use toCharArray() -> For a char[], Java only provides the natural sort - Arrays.sort(arr), no custom comparator 
+
         Character[] arr = new Character[s.length()];
         for (int i = 0; i < s.length(); ++i) {
             arr[i] = s.charAt(i);
         }
         
         Arrays.sort(arr,(a,b)->so[a-'a']-so[b-'a']);
+
         StringBuilder sb = new StringBuilder(arr.length);
         for (Character c : arr) {
             sb.append(c.charValue());
