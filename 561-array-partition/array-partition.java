@@ -1,5 +1,6 @@
 //Time Complexity - O(nlogn)
 //Space Complexity - O(1)
+// Sort and alternate number to add 
 /*
 class Solution {
     public int arrayPairSum(int[] nums) {
@@ -12,6 +13,9 @@ class Solution {
     }
 }
 */
+//Time Complexity - O(n)
+//Space Complexity - O(n)
+// Bucket sort and add 
 class Solution {
     public int arrayPairSum(int[] nums) {
         HashMap<Integer,Integer> map = new HashMap<>();
