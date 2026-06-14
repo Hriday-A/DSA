@@ -6,7 +6,7 @@ class Solution {
         int sum=0;
         while(i<prices.length){
             min = Math.min(min,prices[i]);
-            System.out.println(min);
+            // System.out.println(min);
             if(min!=-1 && prices[i]>min){
                 sum+=prices[i]- min;
                 min=prices[i];
