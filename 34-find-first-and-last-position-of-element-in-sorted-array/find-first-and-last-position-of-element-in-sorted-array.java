@@ -1,39 +1,42 @@
 class Solution {
+    private int [] nums;
+    private int target;
     public int[] searchRange(int[] nums, int target) {
-        int first = binarySearchFirst(nums,0,nums.length-1,target);
-        if (first==-1) return new int[]{-1,-1};
-        int last = binarySearchLast(nums, first, nums.length - 1, target);
-        return new int[]{first, last};
+        if(nums.length==0) return new int[]{-1,-1};
+        int l=0;
+        int r= nums.length-1;
+        this.nums=nums;
+        this.target=target;
+        int first = binarysearchfirst();
+        if(first==-1) return new int[]{-1,-1};
+        int last = binarysearchlast(first);
+        return new int[]{first,last};
     }
-    private int binarySearchFirst(int[] nums,int low,int high, int target){
-        while(low<=high){
-            int mid = low + (high - low)/2;
-            if(nums[mid] == target){
-                if(mid == 0 || nums[mid-1] != target){
-                    return mid;
-                }else{
-                    high = mid - 1;
-                }}
-            else if (nums[mid]>target){
-                high = mid - 1;
-            }else low = mid+1; 
-        }
-        return -1;
-    }
-    private int binarySearchLast(int[] nums,int low,int high, int target){
-        while(low<=high){
-            int mid = low + (high - low)/2;
-            if(nums[mid] == target){
-                if(mid == nums.length-1 || nums[mid+1] != target) return mid;
-                else low = mid +1;
+    public int binarysearchfirst(){
+        int l=0;
+        int r=nums.length-1;
+        while(l<r){
+            int mid =l+(r-l)/2;
+            if(nums[mid]<target){
+                l=mid+1;
+            }else{
+                r=mid;
             }
-            else if (nums[mid]>target){
-                high = mid - 1;
-            }else low = mid+1; 
         }
-        return -1;
+        return nums[r]==target?r:-1;
+    }
+
+    public int binarysearchlast(int first){
+        int l=first;
+        int r=nums.length-1;
+        while(l<r){
+            int mid=l+(r-l)/2+1;
+            if(nums[mid]>target){
+                r=mid-1;
+            }else{
+                l=mid;
+            }
+        }
+        return r;
     }
 }
-
-// We used two binary search indivually to find the values for the first and last 
-// also for values with just single value it should return the same postion twice - like if 5 appears at 0 -{0,0}
