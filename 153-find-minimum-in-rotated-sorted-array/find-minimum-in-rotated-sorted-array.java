@@ -6,10 +6,10 @@ class Solution {
             int mid = l+(r-l)/2;
             if(nums[r]>nums[mid]){
                 r=mid;
-                System.out.println("r="+r);
+                // System.out.println("r="+r);
             }else{
                 l=mid+1;
-                System.out.println("l="+l);
+                // System.out.println("l="+l);
             }
         }
         return nums[l];
