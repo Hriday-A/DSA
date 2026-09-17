@@ -1,24 +1,19 @@
 class Solution {
     public int findMaxLength(int[] nums) {
+        int rsum=0;
+        int len=0;
+        //1:+1, 0:-1
         HashMap<Integer,Integer> map = new HashMap<>();
-        int temp=0;
-        int sum=0;
-        int n = nums.length;
-        map.put(0,-1);
-        for(int i=0;i<n;i++){
-            if(nums[i]==1){
-                sum+=1;
-            }else{
-                sum-=1;
+        map.put(0, -1); 
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==1) rsum+=1;
+            else rsum-=1;
+            if(!map.containsKey(rsum)){
+                map.put(rsum,i);
             }
-            if(map.containsKey(sum)){
-                int diff =i-map.get(sum);
-                temp= Math.max(temp,diff);
-            }else{
-                map.put(sum,i);
-            }
+            int curr=map.get(rsum);
+            if((i-curr)>len) len=i-curr;
         }
-        return temp;
+        return len;
     }
 }
-/* Uses Pattern Running Sum (v.common) - whenever see balanced subbarray where sum or product is asked or use, use this method*/
