@@ -1,38 +1,23 @@
-// class Solution {
-//     public int coinChange(int[] coins, int amount) {
-//         //Brute force - Exhaustive
-//         int re = helper(coins,amount,0);
-//         if(re<Integer.MAX_VALUE-10) return re;
-//         return -1;
-//     }
-//     private int helper(int[] coins, int amount, int idx){
-//         //base 
-//         if(idx==coins.length || amount<0) return Integer.MAX_VALUE-10;
-//         if(amount==0) return 0;
-//         //logic
-//         //Not choose
-//         int case1= helper(coins,amount,idx+1);
-//         //choose 
-//         int case2=1+helper(coins,amount-coins[idx],idx);
-//         return Math.min(case1,case2);
-//     }
-// }
-
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int m= coins.length;
+        int m = coins.length;
         int n= amount;
-        int[] dp = new int[n+1];
-        dp[0]=0;
+        int[][] dp = new int[m+1][n+1];
         for(int i=1;i<=n;i++){
-            dp[i]= Integer.MAX_VALUE -10;
+            dp[0][i]=999999;
+            // System.out.println(dp[0][i]);
         }
-        for(int i=1; i<=m;i++){
-            for(int j=coins[i-1];j<=n;j++){
-                dp[j] = Math.min(dp[j],1+dp[j-coins[i-1]]); 
+
+        for(int i=1;i<m+1;i++){
+            for(int j=0;j<n+1;j++){
+                if(j<coins[i-1]) dp[i][j]=dp[i-1][j];
+                else{
+                    dp[i][j]=Math.min(dp[i-1][j],dp[i][j-coins[i-1]]+1);
+                    // System.out.println(dp[i][j]);
+                }
             }
         }
-        if(dp[n]<Integer.MAX_VALUE -10) return dp[n];
-        return -1;
+        if(dp[m][n]==999999) return -1;
+        return dp[m][n];
     }
 }
